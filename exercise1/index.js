@@ -8,9 +8,16 @@ console.log(f);
 var plans = [];
 var lines = f.split('\n');
 
-for (var i = 0; i < lines.length; i++) {
-    // fill in the missing logic here
-}
+plans = lines
+    .filter(line => line !== "")
+    .map(line => {
+        let tmp = line.split(',');
+        return Object.assign({}, {
+            planName: tmp[0],
+            planBenefits: tmp[1],
+            group: tmp[2]
+        });
+    });
 
 assert.deepEqual(plans,
     [{
